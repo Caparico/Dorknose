@@ -1,0 +1,70 @@
+@charset "UTF-8";
+/*------------------------------------*\
+    STYLE.CSS
+\*------------------------------------*/
+/**
+ *
+ * sass --watch style.scss:style.min.css --style compressed
+ *
+ * Here we pull in some variables, include the inuit.css framework, then add our
+ * project-specific components afterwards.
+ */
+
+
+/**
+ * Setup
+ */
+@import "vars";
+@import "inuit.css/inuit";
+
+
+
+/**
+ * She’s all yours, cap’n... Begin importing your stuff here.
+ */
+//@import "ui/example";
+
+body{
+	font-family: $base-font-family;
+}
+p {
+	color: white;
+	background-color: darken($base-ui-color, 20%);
+	padding: 20px;
+	border-radius: $brand-round;
+}
+h1 {
+	color: lightblue;
+	background-color: darken($base-ui-color, 20%);
+	border-radius: $brand-round;
+}
+a:link, a:visited {
+	text-decoration: none;
+	color: Blue;
+}
+a:hover {
+	color: Red;
+}
+.Header {
+	top: 0px;
+	left: 0px;
+	position: absolute;
+	width: 800px;
+	background-image: url(../../Images/header_bg.gif);
+	background-repeat: repeat-x;
+}
+.Menu {
+	top: 160px;
+	left: 15px;
+	width: 195px;
+	position: absolute;
+}
+.Content {
+	top: 160px;
+	left: 170px;
+	position: absolute;
+	width: 600px;
+}
+img {
+	border: 2px red solid;
+}

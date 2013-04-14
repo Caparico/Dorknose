@@ -1,0 +1,34 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Dorknozzle.master.cs" Inherits="Dorknozzle" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link href="css/style.min.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <!---Header--->
+    <div class="Header">
+        <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/redirect.PNG" Width="634" Height="140" AlternateText="The Official Dorknozzle Company Intranet" />
+    </div>
+    <!---Menu --->
+    <div class="Menu">
+        <asp:SiteMapDataSource ID="dorknozzleSiteMap" runat="server" ShowStartingNode="false" />
+        <asp:Menu ID="dorknozzleMenu" runat="server" DataSourceID="dorknozzleSiteMap">
+            <StaticItemTemplate>
+                <%--<img src="Images/Align.JPG" alt="+" width="291" height="254" />--%>
+                <%# Eval("Text") %>
+            </StaticItemTemplate>
+        </asp:Menu>
+    </div>
+    <!--- Content --->
+    <div class="Content">
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server" />
+    </div>
+    </form>
+</body>
+</html>
