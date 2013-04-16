@@ -183,7 +183,7 @@ $brand-round:        4px!default;
 /**
  * Which objects and abstractions would you like to use?
  */
-$use-grids:         false!default;
+$use-grids:         true!default;
 $use-flexbox:       false!default;
 $use-columns:       false!default;
 $use-nav:           false!default;
@@ -191,7 +191,7 @@ $use-options:       false!default;
 $use-pagination:    false!default;
 $use-breadcrumb:    false!default;
 $use-media:         false!default;
-$use-marginalia:    false!default;
+$use-marginalia:    true!default;
 $use-island:        false!default;
 $use-block-list:    false!default;
 $use-matrix:        false!default;
