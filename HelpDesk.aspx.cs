@@ -11,4 +11,11 @@ public partial class HelpDesk : System.Web.UI.Page
     {
 
     }
+    protected void submitButton_Click(object sender, EventArgs e)
+    {
+        if(Page.IsValid)
+        {
+            // Insert code to be executed on button click..
+        }
+    }
 }
