@@ -71,10 +71,8 @@
  
     </div>
     <div class="grid__item  one-third">
-        <!--Submit Button -->
-        <p class="grid__item">
-            <asp:Button ID="submitButton" runat="server" Text="Submit" OnClick="submitButton_Click" />
-        </p>
+        <!--Submit Button -->        
+            <asp:Button ID="submitButton" runat="server" Text="Submit" OnClick="submitButton_Click" CssClass="btn btn--positive btn--beta" />
         <!-- Validation summary -->
         <asp:ValidationSummary id="vSummary" ShowMessageBox="true" runat="server" />
     </div>
