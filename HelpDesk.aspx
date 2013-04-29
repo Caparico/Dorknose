@@ -4,7 +4,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-<asp:Label id=lbl runat=server></asp:Label>
+<asp:Label ID="lbl" runat="server"></asp:Label>
 <h1>Employee Help Desk Request</h1>
 <asp:Label ID="dbErrorMessage" ForeColor="Red" runat="server" />
 <p>

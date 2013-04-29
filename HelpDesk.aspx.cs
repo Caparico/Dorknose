@@ -58,10 +58,9 @@ public partial class HelpDesk : System.Web.UI.Page
             string connectionString = ConfigurationManager.ConnectionStrings["Dorknozzle"].ConnectionString;
             conn = new SqlConnection(connectionString);
             comm = new SqlCommand(
-                "INSERT INTO HelpDesk (EmployeeID, StationNumber, " +
-                "CategoryID, SubjectID, Description, StatusID) " +
-                "VALUES (@EmployeeID, @StationNunmber, @CategoryID, " +
-                "@SubjectID, @Description, @StatusID)", conn);
+                "INSERT INTO HelpDesk (EmployeeID, StationNumber, CategoryID, SubjectID, Description, StatusID)" +
+                "VALUES (@EmployeeID, @StationNunmber, @CategoryID, @SubjectID, @Description, @StatusID)", 
+                conn);
             comm.Parameters.Add("@EmployeeID", System.Data.SqlDbType.Int);
             comm.Parameters["@EmployeeID"].Value = 5;
             comm.Parameters.Add("@StationNumber", System.Data.SqlDbType.Int);
@@ -81,7 +80,7 @@ public partial class HelpDesk : System.Web.UI.Page
             }
             catch
             {
-                dbErrorMessage.Text = "Error submitting the help deks request! " +
+                dbErrorMessage.Text = "Error submitting the help desk request! " +
                     "Please try again later, or change the entered data.";
             }
             finally
