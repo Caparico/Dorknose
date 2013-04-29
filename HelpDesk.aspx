@@ -1,9 +1,12 @@
-﻿<%@ Page Title="Help Desk" Language="C#" MasterPageFile="~/Dorknozzle.master" AutoEventWireup="false" CodeFile="HelpDesk.aspx.cs" Inherits="HelpDesk" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Dorknozzle.master" AutoEventWireup="true" CodeFile="HelpDesk.aspx.cs" Inherits="HelpDesk" %>
+
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+<asp:Label id=lbl runat=server></asp:Label>
 <h1>Employee Help Desk Request</h1>
+<asp:Label ID="dbErrorMessage" ForeColor="Red" runat="server" />
 <p>
     Station Number:
     <asp:TextBox ID="stationTextBox" runat="server" CssClass="textbox" />
@@ -28,4 +31,5 @@
     <asp:Button ID="submitButton" runat="server" CssClass="button" Text="Submit Request" OnClick="submitButton_Click" />
 </p>
 </asp:Content>
+
 
