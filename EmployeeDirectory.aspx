@@ -6,9 +6,9 @@
     <h1>Employee Directory</h1>
     <asp:Repeater ID="employeesRepeater" runat="server">
         <ItemTemplate>
-            Employee ID: <strong><%#Eval("EmployeeID") %></strong><br />
-            Name: <strong><%#Eval("Name") %></strong><br />
-            Username: <strong><%#Eval("Username") %></strong><br />
+            Employee ID: <strong><%#Eval("EmployeeID")%></strong><br />
+            Name: <strong><%#Eval("Name")%></strong><br />
+            Username: <strong><%#Eval("Username")%></strong><br />
         </ItemTemplate>
         <SeparatorTemplate>
             <hr />

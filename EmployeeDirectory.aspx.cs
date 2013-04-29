@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Data.SqlClient;
+using System.Configuration;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data.SqlClient;
+
 
 public partial class EmployeeDirectory : System.Web.UI.Page
 {
@@ -15,10 +17,11 @@ public partial class EmployeeDirectory : System.Web.UI.Page
         SqlDataReader reader;
         string connectionString =
             ConfigurationManager.ConnectionStrings[
-            "Dorknozzle"].connectionString;
+            "Dorknozzle"].ConnectionString;
         conn = new SqlConnection(connectionString);
         comm = new SqlCommand(
-            "SELECT EmployeeID, Name, Username FROM EMployees", conn);
+            "SELECT EmployeeID, Name, Username FROM Employees", 
+            conn);
         try
         {
             conn.Open();
@@ -27,10 +30,6 @@ public partial class EmployeeDirectory : System.Web.UI.Page
             employeesRepeater.DataBind();
             reader.Close();
         }
-        //catch
-        //{
-        //    Response.Write("Error retrieving users data from DataBase.");
-        //}
         finally
         {
             conn.Close();
