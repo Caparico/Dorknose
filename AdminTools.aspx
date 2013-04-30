@@ -41,6 +41,7 @@
     </p>
     <p>
         <asp:Button ID="updateButton" Text="Update Employee" CssClass="button" Enabled="false" runat="server" onclick="updateButton_Click" />
+        <asp:Button ID="deleteButton" Text="Fire This Employee!" CssClass="button" Enabled="false" runat="server" onclick="deleteButton_Click" />
     </p>
 </asp:Content>
 
