@@ -58,9 +58,10 @@ public partial class HelpDesk : System.Web.UI.Page
             string connectionString = ConfigurationManager.ConnectionStrings["Dorknozzle"].ConnectionString;
             conn = new SqlConnection(connectionString);
             comm = new SqlCommand(
-                "INSERT INTO HelpDesk (EmployeeID, StationNumber, CategoryID, SubjectID, Description, StatusID)" +
-                "VALUES (@EmployeeID, @StationNunmber, @CategoryID, @SubjectID, @Description, @StatusID)", 
-                conn);
+                "INSERT INTO HelpDesk (EmployeeID, StationNumber, " +
+                "CategoryID, SubjectID, Description, StatusID) " +
+                "VALUES (@EmployeeID, @StationNumber, @CategoryID, " +
+                "@SubjectID, @Description, @StatusID)", conn);
             comm.Parameters.Add("@EmployeeID", System.Data.SqlDbType.Int);
             comm.Parameters["@EmployeeID"].Value = 5;
             comm.Parameters.Add("@StationNumber", System.Data.SqlDbType.Int);
@@ -70,6 +71,7 @@ public partial class HelpDesk : System.Web.UI.Page
             comm.Parameters.Add("@SubjectID", System.Data.SqlDbType.Int);
             comm.Parameters["@SubjectID"].Value = subjectList.SelectedItem.Value;
             comm.Parameters.Add("@Description", System.Data.SqlDbType.NVarChar, 50);
+            comm.Parameters["@Description"].Value = descriptionTextBox.Text;
             comm.Parameters.Add("@StatusID", System.Data.SqlDbType.Int);
             comm.Parameters["@StatusID"].Value = 1;
             try
@@ -80,8 +82,9 @@ public partial class HelpDesk : System.Web.UI.Page
             }
             catch
             {
-                dbErrorMessage.Text = "Error submitting the help desk request! " +
-                    "Please try again later, or change the entered data.";
+                dbErrorMessage.Text =
+                "Error submitting the help desk request! Please " +
+                "try again later, and/or change the entered data!";
             }
             finally
             {

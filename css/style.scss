@@ -38,6 +38,7 @@ h1 {
 	color: lightblue;
 	background-color: darken($base-ui-color, 20%);
 	border-radius: $brand-round;
+	padding: $base-spacing-unit;
 }
 a:link, a:visited {
 	text-decoration: none;
@@ -67,5 +68,13 @@ a:hover {
 	width: 600px;
 }
 img {
-	border: 2px red solid;
+	border: 2px $base-ui-color solid;
+}
+.button {
+	padding: $base-spacing-unit;
+}
+.widelabel {
+	display: -moz-inline-block;
+	display: inline-block;
+	width: 100px;
 }
