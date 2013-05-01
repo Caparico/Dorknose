@@ -8,7 +8,5 @@ CREATE PROCEDURE InsertHelpDesk
 @StatusID int
 )
 AS
-INSERT INTO HelpDesk (EmployeeID, StationNumber, CategoryID,
-SubjectID, Description, StatusID)
-VALUES (@EmployeeID, @StationNumber, @CategoryID, @SubjectID,
-@Description, @StatusID)
+INSERT INTO HelpDesk (EmployeeID, StationNumber, CategoryID, SubjectID, Description, StatusID)
+VALUES (@EmployeeID, @StationNumber, @CategoryID, @SubjectID, @Description, @StatusID)

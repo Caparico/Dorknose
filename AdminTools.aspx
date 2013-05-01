@@ -35,7 +35,7 @@
         <span class="widelabel">Extension:</span>
         <asp:TextBox ID="extensionTextBox" runat="server" />
         <br />
-        <span class="widelabel">Mobile Phone:</span>
+        <span class="widelabel">Mobile:</span>
         <asp:TextBox ID="mobilePhoneTextBox" runat="server" />
         <br />
     </p>

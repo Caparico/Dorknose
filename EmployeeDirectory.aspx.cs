@@ -12,6 +12,13 @@ public partial class EmployeeDirectory : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!IsPostBack)
+        {
+            BindList();
+        }
+    }
+    protected void BindList()
+    {
         SqlConnection conn;
         SqlCommand comm;
         SqlDataReader reader;
@@ -26,13 +33,23 @@ public partial class EmployeeDirectory : System.Web.UI.Page
         {
             conn.Open();
             reader = comm.ExecuteReader();
-            employeesRepeater.DataSource = reader;
-            employeesRepeater.DataBind();
+            employeesList.DataSource = reader;
+            employeesList.DataBind();
             reader.Close();
         }
         finally
         {
             conn.Close();
+        }
+    }
+        
+    protected void employeesList_ItemCommand(object source, DataListCommandEventArgs e)
+    {
+        if (e.CommandName == "MoreDetailsPlease")
+        {
+            Literal li;
+            li = (Literal)e.Item.FindControl("extraDetailsLiteral");
+            li.Text = "Employee ID: <strong>" + e.CommandArgument + "</strong><br />";
         }
     }
 }
