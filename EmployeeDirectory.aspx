@@ -11,7 +11,7 @@
             Name: <strong><%#Eval("Name")%></strong><br />
             Username: <strong><%#Eval("Username")%></strong><br />
         <asp:LinkButton ID="detailsButton" runat="server"
-            Text='<%#"View more details about " + Eval("Name")%>'
+            Text='<%#"View more on " + Eval("Name")%>'
             CommandName="MoreDetailsPlease"
             CommandArgument='<%#Eval("EmployeeID")%>' />
         </ItemTemplate>
