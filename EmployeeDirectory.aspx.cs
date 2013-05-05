@@ -1,8 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Configuration;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -42,7 +41,8 @@ public partial class EmployeeDirectory : System.Web.UI.Page
             conn.Close();
         }
     }
-        
+    
+    // Control to treat a click on 'More details on employee'
     protected void employeesList_ItemCommand(object source, DataListCommandEventArgs e)
     {
         if (e.CommandName == "MoreDetailsPlease")
@@ -50,6 +50,58 @@ public partial class EmployeeDirectory : System.Web.UI.Page
             Literal li;
             li = (Literal)e.Item.FindControl("extraDetailsLiteral");
             li.Text = "Employee ID: <strong>" + e.CommandArgument + "</strong><br />";
+        }
+        else if (e.CommandName == "EditItem")
+        {
+            employeesList.EditItemIndex = e.Item.ItemIndex;
+            BindList();
+        }
+        else if (e.CommandName == "CancelEditing")
+        {
+            employeesList.EditItemIndex = -1;
+            BindList();
+        }
+        else if (e.CommandName == "UpdateItem")
+        {
+            int EmployeeId = Convert.ToInt32(e.CommandArgument);
+            TextBox nameTextBox = (TextBox)e.Item.FindControl("nameTextBox");
+            string newName = nameTextBox.Text;
+            TextBox usernameTextBox = (TextBox)e.Item.FindControl("usernameTextBox");
+            string newUsername = usernameTextBox.Text;
+            UpdateItem(EmployeeId, newName, newUsername);
+            employeesList.EditItemIndex = -1;
+            BindList();
+        }
+    }
+
+    protected void UpdateItem(int employeeID, string newName, string newUsername)
+    {
+        SqlConnection conn;
+        SqlCommand comm;
+        string connectionString = ConfigurationManager.ConnectionStrings["Dorknozzle"].ConnectionString;
+        conn = new SqlConnection(connectionString);
+        comm = new SqlCommand(
+            "UPDATE Employees " +
+            "SET Name = @NewName, Username = @NewUsername " +
+            "WHERE EmployeeID = @EmployeeID", conn);
+        // With a Stored Procedure:
+        //comm = new SqlCommand("UpdateEmployee", conn);
+        //comm.CommandType = System.Data.CommandType.StoredProcedure;
+
+        comm.Parameters.Add("@EmployeeID", System.Data.SqlDbType.Int);
+        comm.Parameters["@EmployeeID"].Value = employeeID;
+        comm.Parameters.Add("@NewName", System.Data.SqlDbType.NVarChar, 50);
+        comm.Parameters["@NewName"].Value = newName;
+        comm.Parameters.Add("@NewUsername", System.Data.SqlDbType.NVarChar, 50);
+        comm.Parameters["@NewUsername"].Value = newUsername;
+        try
+        {
+            conn.Open();
+            comm.ExecuteNonQuery();
+        }
+        finally
+        {
+            conn.Close();
         }
     }
 }
