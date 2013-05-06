@@ -4,7 +4,13 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <h1>Employee Directory</h1>
-    <asp:DataList ID="employeesList" runat="server" onitemcommand="employeesList_ItemCommand">
+    <asp:DataList ID="employeesList" runat="server" 
+        onitemcommand="employeesList_ItemCommand" BackColor="#CCCCCC" 
+        BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" 
+        CellSpacing="2" ForeColor="Black" GridLines="Both">
+        <FooterStyle BackColor="#CCCCCC" />
+        <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
+        <ItemStyle BackColor="White" />
         <ItemTemplate>
         <asp:Literal ID="extraDetailsLiteral" runat="server" EnableViewState="false" />
             Name: <strong><%#Eval("Name")%></strong><br />
@@ -27,6 +33,7 @@
             <asp:LinkButton ID="cancelButton" runat="server" Text="Cancel Editing" 
                 CommandName="CancelEditing" CommandArgument='<%#Eval("EmployeeID")%>'/>
         </EditItemTemplate>
+        <SelectedItemStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
         <SeparatorTemplate>
             <hr />
         </SeparatorTemplate>
