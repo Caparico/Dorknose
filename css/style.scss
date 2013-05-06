@@ -47,6 +47,12 @@ a:link, a:visited {
 a:hover {
 	color: Red;
 }
+/* td {
+	border: 2px dotted $base-ui-color;
+} */
+img {
+	border: 2px $base-ui-color solid;
+}
 .Header {
 	top: 0px;
 	left: 0px;
@@ -67,9 +73,7 @@ a:hover {
 	position: absolute;
 	width: 600px;
 }
-img {
-	border: 2px $base-ui-color solid;
-}
+
 .button {
 	padding: $base-spacing-unit;
 }
@@ -77,4 +81,23 @@ img {
 	display: -moz-inline-block;
 	display: inline-block;
 	width: 100px;
+}
+.GridMain {
+	border-top: gainsboro thin solid;
+	border-bottom: gainsboro thin solid;
+	border-left: gainsboro thin solid;
+	border-right: gainsboro thin solid;
+	background-color: $base-ui-color;
+	width: 400px;
+}
+.GridRow {
+	background-color: #FFFAFA;
+}
+.GridSelectedRow {
+	background-color: #E6E6FA;
+}
+.GridHeader {
+	background-color: #ADD8E6;
+	font-weight: bold;
+	text-align: left;
 }
