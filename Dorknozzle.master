@@ -13,14 +13,14 @@
     <form id="form1" runat="server">
     <!---Header--->
     <div class="Header">
-        <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/redirect.PNG" Width="634" Height="140" AlternateText="The Official Dorknozzle Company Intranet" />
+        <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/Help-Desk.jpg" Width="650" Height="155" AlternateText="The Official Dorknozzle Company Intranet" />
     </div>
     <!---Menu --->
     <div class="Menu">
         <asp:SiteMapDataSource ID="dorknozzleSiteMap" runat="server" ShowStartingNode="false" />
         <asp:Menu ID="dorknozzleMenu" runat="server" DataSourceID="dorknozzleSiteMap">
             <StaticItemTemplate>
-                <%--<img src="Images/Align.JPG" alt="+" width="291" height="254" />--%>
+                <%--<img src="Images/Help-Desk.jpg" alt="+" width="291" height="254" />--%>
                 <%# Eval("Text") %>
             </StaticItemTemplate>
         </asp:Menu>
