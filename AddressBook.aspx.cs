@@ -86,4 +86,57 @@ public partial class AddressBook : System.Web.UI.Page
         employeeDetails.ChangeMode(e.NewMode);
         BindDetails();
     }
+    protected void employeeDetails_ItemUpdating(object sender, DetailsViewUpdateEventArgs e)
+    {
+        int employeeId = (int)employeeDetails.DataKey.Value;
+        TextBox newAddressTextBox = (TextBox)employeeDetails.FindControl("editAddressTextBox");
+        TextBox newCityTextBox = (TextBox)employeeDetails.FindControl("editCityTextBox");
+        TextBox newStateTextBox = (TextBox)employeeDetails.FindControl("editStateTextBox");
+        TextBox newZipTextBox = (TextBox)employeeDetails.FindControl("editZipTextBox");
+        TextBox newHomePhoneTextBox = (TextBox)employeeDetails.FindControl("editHomePhoneTextBox");
+        TextBox newExtensionTextBox = (TextBox)employeeDetails.FindControl("editExtensionTextBox");
+        string newAddress = newAddressTextBox.Text;
+        string newCity = newCityTextBox.Text;
+        string newState = newStateTextBox.Text;
+        string newZip = newZipTextBox.Text;
+        string newHomePhone = newHomePhoneTextBox.Text;
+        string newExtension = newExtensionTextBox.Text;
+        SqlConnection conn;
+        SqlCommand comm;
+        string connectionString = ConfigurationManager.ConnectionStrings["Dorknozzle"].ConnectionString;
+        conn = new SqlConnection(connectionString);
+        comm = new SqlCommand(
+            "UPDATE Employees " +
+            "SET Address = @NewAddress, City = @NewCity, State = @NewState, Zip = @NewZip, HomePhone = @NewHomePhone, Extension = @NewExtension " +
+            "WHERE EmployeeID = @EmployeeID", conn);
+        // with a stored procedure:
+        //comm = new SqlCommand("UpdateEmployeeDetails", conn);
+        //comm.CommandType = System.Data.CommandType.StoredProcedure;
+        comm.Parameters.Add("EmployeeID", System.Data.SqlDbType.Int);
+        comm.Parameters["EmployeeID"].Value = employeeId;
+        comm.Parameters.Add("NewAddress", System.Data.SqlDbType.NVarChar, 50);
+        comm.Parameters["NewAddress"].Value = newAddress;
+        comm.Parameters.Add("NewCity", System.Data.SqlDbType.NVarChar, 50);
+        comm.Parameters["NewCity"].Value = newCity;
+        comm.Parameters.Add("NewState", System.Data.SqlDbType.NVarChar, 50);
+        comm.Parameters["NewState"].Value = newState;
+        comm.Parameters.Add("NewZip", System.Data.SqlDbType.NVarChar, 50);
+        comm.Parameters["NewZip"].Value = newZip;
+        comm.Parameters.Add("NewHomePhone", System.Data.SqlDbType.NVarChar, 50);
+        comm.Parameters["NewHomePhone"].Value = newHomePhone;
+        comm.Parameters.Add("NewExtension", System.Data.SqlDbType.NVarChar, 50);
+        comm.Parameters["NewExtension"].Value = newExtension;
+        try
+        {
+            conn.Open();
+            comm.ExecuteNonQuery();
+        }
+        finally
+        {
+            conn.Close();
+        }
+        employeeDetails.ChangeMode(DetailsViewMode.ReadOnly);
+        BindGrid();
+        BindDetails();
+    }
 }

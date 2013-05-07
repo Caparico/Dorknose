@@ -14,7 +14,8 @@
         </Columns>
     </asp:GridView><br />
     <asp:DetailsView ID="employeeDetails" runat="server" AutoGenerateRows="False" 
-        onmodechanging="employeeDetails_ModeChanging">
+        onmodechanging="employeeDetails_ModeChanging" 
+        onitemupdating="employeeDetails_ItemUpdating">
         <Fields>
             <asp:TemplateField HeaderText="Address">
                 <EditItemTemplate>
