@@ -5,17 +5,16 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <h1>Address Book</h1>
     <asp:GridView ID="grid" runat="server" AutoGenerateColumns="False" 
-        onselectedindexchanged="grid_SelectedIndexChanged">
+        AllowPaging="True" AllowSorting="True" DataKeyNames="EmployeeID" 
+        DataSourceID="employeesDataSource" onsorting="grid_Sorting" PageSize="4">
         <Columns>
-            <asp:boundField DataField="Name" HeaderText="Name" />
-            <asp:boundField DataField="City" HeaderText="City" />
+            <asp:boundField DataField="Name" HeaderText="Name" SortExpression="Name" />
+            <asp:boundField DataField="City" HeaderText="City" SortExpression="City" />
             <asp:boundField DataField="MobilePhone" HeaderText="Mobile Phone" />
             <asp:ButtonField CommandName="Select" Text="Select" />
         </Columns>
     </asp:GridView><br />
-    <asp:DetailsView ID="employeeDetails" runat="server" AutoGenerateRows="False" 
-        onmodechanging="employeeDetails_ModeChanging" 
-        onitemupdating="employeeDetails_ItemUpdating">
+    <asp:DetailsView ID="employeeDetails" runat="server" AutoGenerateRows="False">
         <Fields>
             <asp:TemplateField HeaderText="Address">
                 <EditItemTemplate>
@@ -89,5 +88,8 @@
             <%#Eval("Name")%>
         </HeaderTemplate>
     </asp:DetailsView>
+    <asp:SqlDataSource ID="employeesDataSource" runat="server" 
+        ConnectionString="<%$ ConnectionStrings:Dorknozzle %>" 
+        SelectCommand="SELECT [EmployeeID], [Name], [MobilePhone], [City] FROM [Employees] ORDER BY [Name]"></asp:SqlDataSource>
 </asp:Content>
 

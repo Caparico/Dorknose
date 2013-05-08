@@ -20,9 +20,11 @@ Default skin template. The following skins are provided as examples only.
     <RowStyle CssClass="GridRow" />
     <SelectedRowStyle CssClass="GridSelectedRow" />
     <HeaderStyle CssClass="GridHeader" />
+    <PagerStyle CssClass="GridRow" />
 </asp:GridView>
 
 <asp:DetailsView runat="server" CssClass="GridMain" CellPadding="4" GridLines="None">
     <RowStyle CssClass="GridRow" />
     <HeaderStyle CssClass="GridHeader" />
+    <PagerStyle CssClass="GridRow" />
 </asp:DetailsView>
