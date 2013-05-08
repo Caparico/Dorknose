@@ -19,4 +19,22 @@ public partial class AddressBook : System.Web.UI.Page
     {
         grid.DataBind();
     }
+    protected void employeeDetails_ItemUpdated(object sender, DetailsViewUpdatedEventArgs e)
+    {
+        grid.DataBind();
+    }
+
+    protected void employeeDetails_ItemDeleted(object sender, DetailsViewDeletedEventArgs e)
+    {
+        grid.DataBind();
+    }
+
+    protected void employeeDetails_ItemInserted(object sender, DetailsViewInsertedEventArgs e)
+    {
+        grid.DataBind();
+    }
+    protected void addEmployeeButton_Click(object sender, EventArgs e)
+    {
+        employeeDetails.ChangeMode(DetailsViewMode.Insert);
+    }
 }
