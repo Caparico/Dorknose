@@ -6,7 +6,8 @@
     <h1>Address Book</h1>
     <p>
         <button>
-            <asp:LinkButton ID="addEMployeeButton" runat="server" Text="Add a New Employee" />
+            <asp:LinkButton ID="addEmployeeButton" runat="server" Text="Add a New Employee" 
+                onclick="addEmployeeButton_Click" />
         </button>
     </p>
     <asp:GridView ID="grid" runat="server" AutoGenerateColumns="False" 
