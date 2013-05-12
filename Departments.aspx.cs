@@ -38,7 +38,18 @@ public partial class Departments : System.Web.UI.Page
         {
             dataSet = (DataSet)ViewState["DepartmentsDataSet"];
         }
-        departmentsGrid.DataSource = dataSet;
+
+        string sortExpression;
+        if (gridSortDirection == SortDirection.Ascending)
+        {
+            sortExpression = gridSortExpression + " ASC";
+        }
+        else
+        {
+            sortExpression = gridSortExpression + " DESC";
+        }
+        dataSet.Tables["Departments"].DefaultView.Sort = sortExpression;
+        departmentsGrid.DataSource = dataSet.Tables["Departments"].DefaultView;
         departmentsGrid.DataBind();
     }
     protected void departmentsGrid_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -46,5 +57,60 @@ public partial class Departments : System.Web.UI.Page
         int newPageIndex = e.NewPageIndex;
         departmentsGrid.PageIndex = newPageIndex;
         BindGrid();
+    }
+    protected void departmentsGrid_Sorting(object sender, GridViewSortEventArgs e)
+    {
+        string sortExpression = e.SortExpression;
+        if (sortExpression == gridSortExpression)
+        {
+            if (gridSortDirection == SortDirection.Ascending)
+            {
+                gridSortDirection = SortDirection.Descending;
+            }
+            else
+            {
+                gridSortDirection = SortDirection.Ascending;
+            }
+        }
+        else
+        {
+            gridSortDirection = SortDirection.Ascending;
+        }
+        gridSortExpression = sortExpression;
+        BindGrid();
+    }
+
+    private SortDirection gridSortDirection
+    {
+        get
+        {
+            if (ViewState["GridSortDirection"] == null)
+            {
+                ViewState["GridSortDirection"] = SortDirection.Ascending;
+            }
+            return (SortDirection)ViewState["GridSortDirection"];
+        }
+
+        set
+        {
+            ViewState["GridSortDirection"] = value;
+        }
+    }
+
+    private string gridSortExpression
+    {
+        get
+        {
+            if (ViewState["GridSortExpression"] == null)
+            {
+                ViewState["GridSortExpression"] = "DepartmentID";
+            }
+            return (string)ViewState["GridSortExpression"];
+        }
+
+        set
+        {
+            ViewState["GridSortExpression"] = value;
+        }
     }
 }
